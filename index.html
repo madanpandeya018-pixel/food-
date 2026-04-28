@@ -2,55 +2,80 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Car Showroom</title>
+    <title>Luxury Car Showroom</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
             margin: 0;
-            background-color: #f0f0f0;
+            font-family: Arial, sans-serif;
+            background: #f4f4f4;
         }
         header {
-            background: #000;
-            color: #fff;
-            text-align: center;
+            background: #111;
+            color: white;
             padding: 20px;
+            text-align: center;
+        }
+        nav {
+            background: #333;
+            padding: 10px;
+            text-align: center;
+        }
+        nav a {
+            color: white;
+            margin: 10px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        nav a:hover {
+            color: yellow;
+        }
+        .hero {
+            background: url('https://images.pexels.com/photos/1149831/pexels-photo-1149831.jpeg') no-repeat center/cover;
+            color: white;
+            padding: 80px;
+            text-align: center;
         }
         .container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
             padding: 20px;
         }
+        .cars {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
         .card {
-            background: #fff;
+            background: white;
             border-radius: 10px;
             overflow: hidden;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-            transition: 0.3s;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
         }
-        .card:hover {
-            transform: scale(1.05);
-        }
-        img {
+        .card img {
             width: 100%;
-            height: 180px;
+            height: 200px;
             object-fit: cover;
         }
-        .info {
+        .card-content {
             padding: 15px;
-            text-align: center;
         }
         .price {
             color: green;
             font-weight: bold;
+            margin: 10px 0;
+        }
+        footer {
+            background: #111;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: 30px;
         }
         button {
-            background: black;
-            color: white;
             padding: 10px;
             border: none;
-            border-radius: 5px;
+            background: black;
+            color: white;
             cursor: pointer;
+            border-radius: 5px;
         }
         button:hover {
             background: gray;
@@ -60,67 +85,106 @@
 <body>
 
 <header>
-    <h1>🚗 Car Showroom</h1>
-    <p>Select your favorite car</p>
+    <h1>🚗 Premium Luxury Car Showroom</h1>
+    <p>Your destination for world-class vehicles</p>
 </header>
+
+<nav>
+    <a href="#">Home</a>
+    <a href="#">Cars</a>
+    <a href="#">About</a>
+    <a href="#">Contact</a>
+</nav>
+
+<section class="hero">
+    <h2>Drive Your Dream Car Today</h2>
+    <p>Explore the most luxurious, powerful, and stylish cars available in the market.</p>
+</section>
 
 <div class="container">
 
-    <div class="card">
-        <img src="https://images.pexels.com/photos/358070/pexels-photo-358070.jpeg" alt="Tesla">
-        <div class="info">
-            <h3>Tesla Model S</h3>
-            <p class="price">$80,000</p>
-            <button>Buy Now</button>
+    <h2>Featured Cars</h2>
+
+    <div class="cars">
+
+        <div class="card">
+            <img src="https://images.pexels.com/photos/358070/pexels-photo-358070.jpeg">
+            <div class="card-content">
+                <h3>Tesla Model S</h3>
+                <p>The Tesla Model S is a fully electric luxury sedan known for its incredible performance, cutting-edge technology, and long driving range. It offers a futuristic driving experience with autopilot features, minimalistic interior, and silent acceleration.</p>
+                <p class="price">$80,000</p>
+                <button>Buy Now</button>
+            </div>
         </div>
+
+        <div class="card">
+            <img src="https://images.pexels.com/photos/170811/pexels-photo-170811.jpeg">
+            <div class="card-content">
+                <h3>BMW M4</h3>
+                <p>The BMW M4 is a high-performance sports coupe that blends luxury with aggressive styling. Powered by a turbocharged engine, it delivers thrilling speed, precise handling, and a driver-focused interior designed for maximum comfort and control.</p>
+                <p class="price">$70,000</p>
+                <button>Buy Now</button>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="https://images.pexels.com/photos/210019/pexels-photo-210019.jpeg">
+            <div class="card-content">
+                <h3>Audi R8</h3>
+                <p>The Audi R8 is a supercar that combines breathtaking design with exceptional performance. Featuring a powerful V10 engine and quattro all-wheel drive, it offers both speed and stability, making it a dream car for enthusiasts.</p>
+                <p class="price">$120,000</p>
+                <button>Buy Now</button>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="https://images.pexels.com/photos/100650/pexels-photo-100650.jpeg">
+            <div class="card-content">
+                <h3>Mercedes-Benz C-Class</h3>
+                <p>The Mercedes-Benz C-Class represents elegance and innovation. With a luxurious interior, advanced safety features, and smooth performance, it is perfect for those who value comfort and prestige in their daily drive.</p>
+                <p class="price">$60,000</p>
+                <button>Buy Now</button>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="https://images.pexels.com/photos/358070/pexels-photo-358070.jpeg">
+            <div class="card-content">
+                <h3>Lamborghini Huracan</h3>
+                <p>The Lamborghini Huracan is an exotic supercar that delivers unmatched speed and stunning design. With its roaring engine and sharp lines, it is built to impress both on the road and on the track.</p>
+                <p class="price">$200,000</p>
+                <button>Buy Now</button>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="https://images.pexels.com/photos/1592384/pexels-photo-1592384.jpeg">
+            <div class="card-content">
+                <h3>Ford Mustang</h3>
+                <p>The Ford Mustang is an iconic American muscle car known for its bold design and powerful engine options. It delivers an exciting driving experience and remains a symbol of performance and freedom.</p>
+                <p class="price">$55,000</p>
+                <button>Buy Now</button>
+            </div>
+        </div>
+
     </div>
 
-    <div class="card">
-        <img src="https://images.pexels.com/photos/170811/pexels-photo-170811.jpeg" alt="BMW">
-        <div class="info">
-            <h3>BMW M4</h3>
-            <p class="price">$70,000</p>
-            <button>Buy Now</button>
-        </div>
-    </div>
-
-    <div class="card">
-        <img src="https://images.pexels.com/photos/210019/pexels-photo-210019.jpeg" alt="Audi">
-        <div class="info">
-            <h3>Audi R8</h3>
-            <p class="price">$120,000</p>
-            <button>Buy Now</button>
-        </div>
-    </div>
-
-    <div class="card">
-        <img src="https://images.pexels.com/photos/100650/pexels-photo-100650.jpeg" alt="Mercedes">
-        <div class="info">
-            <h3>Mercedes C-Class</h3>
-            <p class="price">$60,000</p>
-            <button>Buy Now</button>
-        </div>
-    </div>
-
-    <div class="card">
-        <img src="https://images.pexels.com/photos/358070/pexels-photo-358070.jpeg" alt="Lamborghini">
-        <div class="info">
-            <h3>Lamborghini Huracan</h3>
-            <p class="price">$200,000</p>
-            <button>Buy Now</button>
-        </div>
-    </div>
-
-    <div class="card">
-        <img src="https://images.pexels.com/photos/1592384/pexels-photo-1592384.jpeg" alt="Mustang">
-        <div class="info">
-            <h3>Ford Mustang</h3>
-            <p class="price">$55,000</p>
-            <button>Buy Now</button>
-        </div>
-    </div>
+    <h2>About Our Showroom</h2>
+    <p>
+        Welcome to our premium car showroom, where automotive excellence meets customer satisfaction. We specialize in offering a wide range of luxury vehicles, sports cars, and electric models from the world’s most renowned brands. Our mission is to provide not just cars, but experiences that redefine the joy of driving.
+    </p>
+    <p>
+        Each car in our collection is carefully selected to ensure the highest quality, performance, and reliability. Whether you are looking for speed, comfort, sustainability, or advanced technology, we have something for every car enthusiast. Our team of experts is always ready to assist you in choosing the perfect vehicle that matches your lifestyle and preferences.
+    </p>
+    <p>
+        In addition to sales, we also offer financing options, maintenance services, and after-sales support to ensure a seamless ownership experience. Visit our showroom today and discover why we are the trusted choice for car lovers around the world.
+    </p>
 
 </div>
+
+<footer>
+    <p>© 2026 Car Showroom | All Rights Reserved</p>
+</footer>
 
 </body>
 </html>
