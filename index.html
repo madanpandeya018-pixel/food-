@@ -1,75 +1,121 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>iPhone Showroom</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background: #f5f5f5;
-      margin: 0;
-      padding: 20px;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dog Breeds Gallery</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
 
-    h1 {
-      text-align: center;
-    }
+        header {
+            background-color: #4CAF50;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
 
-    .container {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-      gap: 20px;
-    }
+        .container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            padding: 20px;
+        }
 
-    .card {
-      background: white;
-      border-radius: 10px;
-      padding: 15px;
-      text-align: center;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-      transition: 0.3s;
-    }
+        .card {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            overflow: hidden;
+            transition: transform 0.3s;
+        }
 
-    .card:hover {
-      transform: scale(1.05);
-    }
+        .card:hover {
+            transform: scale(1.05);
+        }
 
-    img {
-      width: 100%;
-      height: 150px;
-      object-fit: contain;
-    }
+        .card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
 
-    .price {
-      color: green;
-      font-weight: bold;
-      margin-top: 10px;
-    }
-  </style>
+        .card-content {
+            padding: 15px;
+        }
+
+        .card-content h3 {
+            margin: 0 0 10px;
+        }
+
+        .card-content p {
+            font-size: 14px;
+            color: #555;
+        }
+    </style>
 </head>
 <body>
 
-<h1>📱 iPhone Showroom (100 Products)</h1>
+<header>
+    <h1>Popular Dog Breeds</h1>
+    <p>Learn about different types of dogs</p>
+</header>
 
-<div class="container" id="productContainer"></div>
+<div class="container">
 
-<script>
-  const container = document.getElementById("productContainer");
+    <div class="card">
+        <img src="https://images.unsplash.com/photo-1558944351-cd0a3e0bcd33" alt="Labrador">
+        <div class="card-content">
+            <h3>Labrador Retriever</h3>
+            <p>Friendly, outgoing, and high-spirited dogs. Great family pets.</p>
+        </div>
+    </div>
 
-  for (let i = 1; i <= 100; i++) {
-    let price = 500 + Math.floor(Math.random() * 1000);
+    <div class="card">
+        <img src="https://images.unsplash.com/photo-1583511655857-d19b40a7a54e" alt="German Shepherd">
+        <div class="card-content">
+            <h3>German Shepherd</h3>
+            <p>Intelligent and versatile working dogs. Loyal and protective.</p>
+        </div>
+    </div>
 
-    let card = `
-      <div class="card">
-        <img src="https://via.placeholder.com/150?text=iPhone+${i}" alt="iPhone ${i}">
-        <h3>iPhone Model ${i}</h3>
-        <p class="price">$${price}</p>
-      </div>
-    `;
+    <div class="card">
+        <img src="https://images.unsplash.com/photo-1601758123927-1961d0fbbbc1" alt="Golden Retriever">
+        <div class="card-content">
+            <h3>Golden Retriever</h3>
+            <p>Gentle, friendly, and devoted. Excellent with children.</p>
+        </div>
+    </div>
 
-    container.innerHTML += card;
-  }
-</script>
+    <div class="card">
+        <img src="https://images.unsplash.com/photo-1558788353-f76d92427f16" alt="Bulldog">
+        <div class="card-content">
+            <h3>Bulldog</h3>
+            <p>Calm and courageous dogs with a distinctive wrinkled face.</p>
+        </div>
+    </div>
+
+    <div class="card">
+        <img src="https://images.unsplash.com/photo-1518717758536-85ae29035b6d" alt="Poodle">
+        <div class="card-content">
+            <h3>Poodle</h3>
+            <p>Highly intelligent and elegant dogs. Comes in various sizes.</p>
+        </div>
+    </div>
+
+    <div class="card">
+        <img src="https://images.unsplash.com/photo-1598137260148-34c2c60d9a16" alt="Beagle">
+        <div class="card-content">
+            <h3>Beagle</h3>
+            <p>Curious and merry dogs with a great sense of smell.</p>
+        </div>
+    </div>
+
+</div>
 
 </body>
 </html>
