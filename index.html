@@ -2,31 +2,59 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Advanced Car Showroom</title>
+<title>Classic Car Showroom</title>
 
 <style>
 body {
-    font-family: Arial;
     margin: 0;
-    background: #f4f4f4;
+    font-family: 'Georgia', serif;
+    background: #f8f5f0;
 }
+
+/* HEADER */
 header {
-    background: black;
-    color: white;
-    text-align: center;
+    background: #2c2c2c;
+    color: #fff;
     padding: 20px;
+    text-align: center;
 }
+
+/* NAVBAR */
+nav {
+    background: #444;
+    padding: 10px;
+    text-align: center;
+}
+nav button {
+    background: transparent;
+    border: none;
+    color: white;
+    margin: 10px;
+    font-size: 16px;
+    cursor: pointer;
+}
+nav button:hover {
+    color: gold;
+}
+
+/* CONTAINER */
 .container {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px,1fr));
     gap: 20px;
     padding: 20px;
 }
+
+/* CARD */
 .card {
     background: white;
     border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
     overflow: hidden;
+    box-shadow: 0 5px 12px rgba(0,0,0,0.2);
+    transition: 0.3s;
+}
+.card:hover {
+    transform: scale(1.03);
 }
 .card img {
     width: 100%;
@@ -37,13 +65,29 @@ header {
     padding: 15px;
 }
 .price {
-    color: green;
+    color: darkgreen;
     font-weight: bold;
 }
-select, button {
+
+/* BUTTON */
+button.buy {
     width: 100%;
-    padding: 8px;
-    margin-top: 5px;
+    padding: 10px;
+    background: #2c2c2c;
+    color: white;
+    border: none;
+    margin-top: 10px;
+    cursor: pointer;
+}
+button.buy:hover {
+    background: goldenrod;
+}
+
+footer {
+    background: #2c2c2c;
+    color: white;
+    text-align: center;
+    padding: 15px;
 }
 </style>
 </head>
@@ -51,67 +95,93 @@ select, button {
 <body>
 
 <header>
-    <h1>🚗 Mega Car Showroom (50 Models)</h1>
-    <p>All details: price, location, delivery & more</p>
+    <h1>🚗 Classic & Luxury Car Showroom</h1>
+    <p>Explore modern, sports & vintage cars</p>
 </header>
+
+<nav>
+    <button onclick="filterCars('all')">All</button>
+    <button onclick="filterCars('classic')">Classic</button>
+    <button onclick="filterCars('sports')">Sports</button>
+    <button onclick="filterCars('luxury')">Luxury</button>
+</nav>
 
 <div class="container" id="cars"></div>
 
+<footer>
+    <p>© 2026 Premium Showroom</p>
+</footer>
+
 <script>
-const carNames = [
-"Tesla Model S","BMW M4","Audi R8","Mercedes C-Class","Ford Mustang",
-"Lamborghini Huracan","Porsche 911","Toyota Supra","Nissan GTR","Honda Civic"
-];
-
-const places = ["Kathmandu","Pokhara","Lalitpur","Biratnagar","Butwal"];
-
+const cars = [];
+const categories = ["classic","sports","luxury"];
+const names = ["Mustang","Camaro","Ferrari","Rolls Royce","Bentley","Porsche","Jaguar","Chevrolet"];
+const places = ["Kathmandu","Pokhara","Lalitpur","Butwal"];
 const colors = ["Red","Black","White","Blue","Silver"];
-const models = ["Base","Sport","Premium","Luxury"];
+const models = ["Base","Sport","Premium"];
 
-let container = document.getElementById("cars");
-
+// GENERATE 50 CARS
 for(let i=1;i<=50;i++){
-
-    let car = carNames[i % carNames.length];
-    let price = (50000 + i*1500);
-    let delivery = (3 + (i%7)) + " days";
-    let holding = (2 + (i%5)) + " days";
-    let place = places[i % places.length];
-
-    let div = document.createElement("div");
-    div.className = "card";
-
-    div.innerHTML = `
-    <img src="https://picsum.photos/400/200?random=${i}">
-    <div class="info">
-        <h3>${car} ${i}</h3>
-
-        <p class="price">$${price}</p>
-
-        <p><b>📍 Available at:</b> ${place}</p>
-        <p><b>🚚 Delivery Time:</b> ${delivery}</p>
-        <p><b>⏳ Holding Time:</b> ${holding}</p>
-
-        <label>Select Color:</label>
-        <select>
-            ${colors.map(c => `<option>${c}</option>`).join("")}
-        </select>
-
-        <label>Select Model:</label>
-        <select>
-            ${models.map(m => `<option>${m}</option>`).join("")}
-        </select>
-
-        <button onclick="buyCar('${car}', ${price})">Buy Now</button>
-    </div>
-    `;
-
-    container.appendChild(div);
+    cars.push({
+        id: i,
+        name: names[i % names.length] + " " + i,
+        price: 40000 + i*2000,
+        place: places[i % places.length],
+        delivery: (2+i%6)+" days",
+        holding: (1+i%4)+" days",
+        category: categories[i % categories.length]
+    });
 }
 
-function buyCar(name, price){
-    alert("You selected: " + name + "\\nPrice: $" + price);
+function displayCars(list){
+    let container = document.getElementById("cars");
+    container.innerHTML = "";
+
+    list.forEach(car => {
+        let div = document.createElement("div");
+        div.className = "card";
+
+        div.innerHTML = `
+        <img src="https://picsum.photos/400/200?random=${car.id}">
+        <div class="info">
+            <h3>${car.name}</h3>
+            <p class="price">$${car.price}</p>
+
+            <p><b>📍 Location:</b> ${car.place}</p>
+            <p><b>🚚 Delivery:</b> ${car.delivery}</p>
+            <p><b>⏳ Holding:</b> ${car.holding}</p>
+
+            <label>Color:</label>
+            <select>
+                ${colors.map(c=>`<option>${c}</option>`).join("")}
+            </select>
+
+            <label>Model:</label>
+            <select>
+                ${models.map(m=>`<option>${m}</option>`).join("")}
+            </select>
+
+            <button class="buy" onclick="buyCar('${car.name}')">Buy Now</button>
+        </div>
+        `;
+        container.appendChild(div);
+    });
 }
+
+function filterCars(type){
+    if(type === "all"){
+        displayCars(cars);
+    } else {
+        displayCars(cars.filter(c => c.category === type));
+    }
+}
+
+function buyCar(name){
+    alert("You selected: " + name);
+}
+
+// INITIAL LOAD
+displayCars(cars);
 </script>
 
 </body>
