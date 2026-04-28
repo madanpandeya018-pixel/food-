@@ -2,31 +2,27 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Classic Car Showroom</title>
+<title>Real Car Showroom</title>
 
 <style>
 body {
     margin: 0;
-    font-family: 'Georgia', serif;
-    background: #f8f5f0;
+    font-family: Georgia, serif;
+    background: #f5f2ec;
 }
-
-/* HEADER */
 header {
-    background: #2c2c2c;
-    color: #fff;
+    background: #1a1a1a;
+    color: white;
+    text-align: center;
     padding: 20px;
-    text-align: center;
 }
-
-/* NAVBAR */
 nav {
-    background: #444;
-    padding: 10px;
+    background: #333;
     text-align: center;
+    padding: 10px;
 }
 nav button {
-    background: transparent;
+    background: none;
     border: none;
     color: white;
     margin: 10px;
@@ -36,25 +32,17 @@ nav button {
 nav button:hover {
     color: gold;
 }
-
-/* CONTAINER */
 .container {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px,1fr));
     gap: 20px;
     padding: 20px;
 }
-
-/* CARD */
 .card {
     background: white;
     border-radius: 10px;
     overflow: hidden;
-    box-shadow: 0 5px 12px rgba(0,0,0,0.2);
-    transition: 0.3s;
-}
-.card:hover {
-    transform: scale(1.03);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
 }
 .card img {
     width: 100%;
@@ -65,29 +53,19 @@ nav button:hover {
     padding: 15px;
 }
 .price {
-    color: darkgreen;
+    color: green;
     font-weight: bold;
 }
-
-/* BUTTON */
 button.buy {
     width: 100%;
     padding: 10px;
-    background: #2c2c2c;
+    background: black;
     color: white;
     border: none;
-    margin-top: 10px;
     cursor: pointer;
 }
 button.buy:hover {
     background: goldenrod;
-}
-
-footer {
-    background: #2c2c2c;
-    color: white;
-    text-align: center;
-    padding: 15px;
 }
 </style>
 </head>
@@ -95,8 +73,7 @@ footer {
 <body>
 
 <header>
-    <h1>🚗 Classic & Luxury Car Showroom</h1>
-    <p>Explore modern, sports & vintage cars</p>
+    <h1>🚗 Premium Car Showroom</h1>
 </header>
 
 <nav>
@@ -108,28 +85,37 @@ footer {
 
 <div class="container" id="cars"></div>
 
-<footer>
-    <p>© 2026 Premium Showroom</p>
-</footer>
-
 <script>
-const cars = [];
-const categories = ["classic","sports","luxury"];
-const names = ["Mustang","Camaro","Ferrari","Rolls Royce","Bentley","Porsche","Jaguar","Chevrolet"];
+
+const carData = [
+{ name:"Ford Mustang", img:"https://images.pexels.com/photos/1592384/pexels-photo-1592384.jpeg", category:"classic"},
+{ name:"Chevrolet Camaro", img:"https://images.pexels.com/photos/3729464/pexels-photo-3729464.jpeg", category:"classic"},
+{ name:"Porsche 911", img:"https://images.pexels.com/photos/1149831/pexels-photo-1149831.jpeg", category:"sports"},
+{ name:"Ferrari 488", img:"https://images.pexels.com/photos/337909/pexels-photo-337909.jpeg", category:"sports"},
+{ name:"Lamborghini Huracan", img:"https://images.pexels.com/photos/358070/pexels-photo-358070.jpeg", category:"sports"},
+{ name:"Rolls Royce Phantom", img:"https://images.pexels.com/photos/358070/pexels-photo-358070.jpeg", category:"luxury"},
+{ name:"Bentley Continental", img:"https://images.pexels.com/photos/3802510/pexels-photo-3802510.jpeg", category:"luxury"},
+{ name:"Mercedes S-Class", img:"https://images.pexels.com/photos/100650/pexels-photo-100650.jpeg", category:"luxury"}
+];
+
 const places = ["Kathmandu","Pokhara","Lalitpur","Butwal"];
 const colors = ["Red","Black","White","Blue","Silver"];
 const models = ["Base","Sport","Premium"];
 
-// GENERATE 50 CARS
-for(let i=1;i<=50;i++){
+let cars = [];
+
+// Generate 50 cars using real images
+for(let i=0;i<50;i++){
+    let base = carData[i % carData.length];
     cars.push({
-        id: i,
-        name: names[i % names.length] + " " + i,
-        price: 40000 + i*2000,
+        id:i,
+        name: base.name + " " + (i+1),
+        img: base.img,
+        category: base.category,
+        price: 50000 + i*2000,
         place: places[i % places.length],
-        delivery: (2+i%6)+" days",
-        holding: (1+i%4)+" days",
-        category: categories[i % categories.length]
+        delivery: (2+i%5)+" days",
+        holding: (1+i%3)+" days"
     });
 }
 
@@ -138,41 +124,39 @@ function displayCars(list){
     container.innerHTML = "";
 
     list.forEach(car => {
-        let div = document.createElement("div");
-        div.className = "card";
+        container.innerHTML += `
+        <div class="card">
+            <img src="${car.img}">
+            <div class="info">
+                <h3>${car.name}</h3>
+                <p class="price">$${car.price}</p>
 
-        div.innerHTML = `
-        <img src="https://picsum.photos/400/200?random=${car.id}">
-        <div class="info">
-            <h3>${car.name}</h3>
-            <p class="price">$${car.price}</p>
+                <p><b>📍 Place:</b> ${car.place}</p>
+                <p><b>🚚 Delivery:</b> ${car.delivery}</p>
+                <p><b>⏳ Holding:</b> ${car.holding}</p>
 
-            <p><b>📍 Location:</b> ${car.place}</p>
-            <p><b>🚚 Delivery:</b> ${car.delivery}</p>
-            <p><b>⏳ Holding:</b> ${car.holding}</p>
+                <label>Color:</label>
+                <select>
+                    ${colors.map(c=>`<option>${c}</option>`).join("")}
+                </select>
 
-            <label>Color:</label>
-            <select>
-                ${colors.map(c=>`<option>${c}</option>`).join("")}
-            </select>
+                <label>Model:</label>
+                <select>
+                    ${models.map(m=>`<option>${m}</option>`).join("")}
+                </select>
 
-            <label>Model:</label>
-            <select>
-                ${models.map(m=>`<option>${m}</option>`).join("")}
-            </select>
-
-            <button class="buy" onclick="buyCar('${car.name}')">Buy Now</button>
+                <button class="buy" onclick="buyCar('${car.name}')">Buy Now</button>
+            </div>
         </div>
         `;
-        container.appendChild(div);
     });
 }
 
 function filterCars(type){
-    if(type === "all"){
+    if(type==="all"){
         displayCars(cars);
     } else {
-        displayCars(cars.filter(c => c.category === type));
+        displayCars(cars.filter(c=>c.category===type));
     }
 }
 
@@ -180,8 +164,9 @@ function buyCar(name){
     alert("You selected: " + name);
 }
 
-// INITIAL LOAD
+// load all
 displayCars(cars);
+
 </script>
 
 </body>
