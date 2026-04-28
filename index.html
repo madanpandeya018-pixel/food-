@@ -2,116 +2,124 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dog Breeds Gallery</title>
+    <title>Car Showroom</title>
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
             margin: 0;
-            padding: 0;
+            background-color: #f4f4f4;
         }
-
         header {
-            background-color: #4CAF50;
-            color: white;
+            background: #111;
+            color: #fff;
+            padding: 15px;
             text-align: center;
-            padding: 20px;
         }
-
         .container {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 20px;
             padding: 20px;
         }
-
-        .card {
-            background: white;
+        .car-card {
+            background: #fff;
             border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            box-shadow: 0 2px 6px rgba(0,0,0,0.2);
             overflow: hidden;
-            transition: transform 0.3s;
+            transition: 0.3s;
         }
-
-        .card:hover {
+        .car-card:hover {
             transform: scale(1.05);
         }
-
-        .card img {
+        .car-card img {
             width: 100%;
-            height: 200px;
+            height: 180px;
             object-fit: cover;
         }
-
-        .card-content {
+        .car-info {
             padding: 15px;
         }
-
-        .card-content h3 {
-            margin: 0 0 10px;
+        .car-info h3 {
+            margin: 0;
         }
-
-        .card-content p {
-            font-size: 14px;
-            color: #555;
+        .price {
+            color: green;
+            font-weight: bold;
+            margin: 10px 0;
+        }
+        button {
+            padding: 10px;
+            background: #111;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background: #444;
         }
     </style>
 </head>
 <body>
 
 <header>
-    <h1>Popular Dog Breeds</h1>
-    <p>Learn about different types of dogs</p>
+    <h1>🚗 Premium Car Showroom</h1>
+    <p>Find your dream car</p>
 </header>
 
 <div class="container">
 
-    <div class="card">
-        <img src="https://images.unsplash.com/photo-1558944351-cd0a3e0bcd33" alt="Labrador">
-        <div class="card-content">
-            <h3>Labrador Retriever</h3>
-            <p>Friendly, outgoing, and high-spirited dogs. Great family pets.</p>
+    <div class="car-card">
+        <img src="https://source.unsplash.com/400x300/?tesla" alt="Tesla">
+        <div class="car-info">
+            <h3>Tesla Model S</h3>
+            <p class="price">$80,000</p>
+            <button>Buy Now</button>
         </div>
     </div>
 
-    <div class="card">
-        <img src="https://images.unsplash.com/photo-1583511655857-d19b40a7a54e" alt="German Shepherd">
-        <div class="card-content">
-            <h3>German Shepherd</h3>
-            <p>Intelligent and versatile working dogs. Loyal and protective.</p>
+    <div class="car-card">
+        <img src="https://source.unsplash.com/400x300/?bmw" alt="BMW">
+        <div class="car-info">
+            <h3>BMW M4</h3>
+            <p class="price">$70,000</p>
+            <button>Buy Now</button>
         </div>
     </div>
 
-    <div class="card">
-        <img src="https://images.unsplash.com/photo-1601758123927-1961d0fbbbc1" alt="Golden Retriever">
-        <div class="card-content">
-            <h3>Golden Retriever</h3>
-            <p>Gentle, friendly, and devoted. Excellent with children.</p>
+    <div class="car-card">
+        <img src="https://source.unsplash.com/400x300/?audi" alt="Audi">
+        <div class="car-info">
+            <h3>Audi R8</h3>
+            <p class="price">$120,000</p>
+            <button>Buy Now</button>
         </div>
     </div>
 
-    <div class="card">
-        <img src="https://images.unsplash.com/photo-1558788353-f76d92427f16" alt="Bulldog">
-        <div class="card-content">
-            <h3>Bulldog</h3>
-            <p>Calm and courageous dogs with a distinctive wrinkled face.</p>
+    <div class="car-card">
+        <img src="https://source.unsplash.com/400x300/?mercedes" alt="Mercedes">
+        <div class="car-info">
+            <h3>Mercedes Benz C-Class</h3>
+            <p class="price">$60,000</p>
+            <button>Buy Now</button>
         </div>
     </div>
 
-    <div class="card">
-        <img src="https://images.unsplash.com/photo-1518717758536-85ae29035b6d" alt="Poodle">
-        <div class="card-content">
-            <h3>Poodle</h3>
-            <p>Highly intelligent and elegant dogs. Comes in various sizes.</p>
+    <div class="car-card">
+        <img src="https://source.unsplash.com/400x300/?lamborghini" alt="Lamborghini">
+        <div class="car-info">
+            <h3>Lamborghini Huracan</h3>
+            <p class="price">$200,000</p>
+            <button>Buy Now</button>
         </div>
     </div>
 
-    <div class="card">
-        <img src="https://images.unsplash.com/photo-1598137260148-34c2c60d9a16" alt="Beagle">
-        <div class="card-content">
-            <h3>Beagle</h3>
-            <p>Curious and merry dogs with a great sense of smell.</p>
+    <div class="car-card">
+        <img src="https://source.unsplash.com/400x300/?ford-mustang" alt="Mustang">
+        <div class="car-info">
+            <h3>Ford Mustang</h3>
+            <p class="price">$55,000</p>
+            <button>Buy Now</button>
         </div>
     </div>
 
