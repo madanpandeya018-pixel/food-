@@ -1,190 +1,118 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Luxury Car Showroom</title>
-    <style>
-        body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-            background: #f4f4f4;
-        }
-        header {
-            background: #111;
-            color: white;
-            padding: 20px;
-            text-align: center;
-        }
-        nav {
-            background: #333;
-            padding: 10px;
-            text-align: center;
-        }
-        nav a {
-            color: white;
-            margin: 10px;
-            text-decoration: none;
-            font-weight: bold;
-        }
-        nav a:hover {
-            color: yellow;
-        }
-        .hero {
-            background: url('https://images.pexels.com/photos/1149831/pexels-photo-1149831.jpeg') no-repeat center/cover;
-            color: white;
-            padding: 80px;
-            text-align: center;
-        }
-        .container {
-            padding: 20px;
-        }
-        .cars {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 20px;
-        }
-        .card {
-            background: white;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-        }
-        .card img {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-        }
-        .card-content {
-            padding: 15px;
-        }
-        .price {
-            color: green;
-            font-weight: bold;
-            margin: 10px 0;
-        }
-        footer {
-            background: #111;
-            color: white;
-            text-align: center;
-            padding: 20px;
-            margin-top: 30px;
-        }
-        button {
-            padding: 10px;
-            border: none;
-            background: black;
-            color: white;
-            cursor: pointer;
-            border-radius: 5px;
-        }
-        button:hover {
-            background: gray;
-        }
-    </style>
+<meta charset="UTF-8">
+<title>Advanced Car Showroom</title>
+
+<style>
+body {
+    font-family: Arial;
+    margin: 0;
+    background: #f4f4f4;
+}
+header {
+    background: black;
+    color: white;
+    text-align: center;
+    padding: 20px;
+}
+.container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px,1fr));
+    gap: 20px;
+    padding: 20px;
+}
+.card {
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    overflow: hidden;
+}
+.card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+.info {
+    padding: 15px;
+}
+.price {
+    color: green;
+    font-weight: bold;
+}
+select, button {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+}
+</style>
 </head>
+
 <body>
 
 <header>
-    <h1>🚗 Premium Luxury Car Showroom</h1>
-    <p>Your destination for world-class vehicles</p>
+    <h1>🚗 Mega Car Showroom (50 Models)</h1>
+    <p>All details: price, location, delivery & more</p>
 </header>
 
-<nav>
-    <a href="#">Home</a>
-    <a href="#">Cars</a>
-    <a href="#">About</a>
-    <a href="#">Contact</a>
-</nav>
+<div class="container" id="cars"></div>
 
-<section class="hero">
-    <h2>Drive Your Dream Car Today</h2>
-    <p>Explore the most luxurious, powerful, and stylish cars available in the market.</p>
-</section>
+<script>
+const carNames = [
+"Tesla Model S","BMW M4","Audi R8","Mercedes C-Class","Ford Mustang",
+"Lamborghini Huracan","Porsche 911","Toyota Supra","Nissan GTR","Honda Civic"
+];
 
-<div class="container">
+const places = ["Kathmandu","Pokhara","Lalitpur","Biratnagar","Butwal"];
 
-    <h2>Featured Cars</h2>
+const colors = ["Red","Black","White","Blue","Silver"];
+const models = ["Base","Sport","Premium","Luxury"];
 
-    <div class="cars">
+let container = document.getElementById("cars");
 
-        <div class="card">
-            <img src="https://images.pexels.com/photos/358070/pexels-photo-358070.jpeg">
-            <div class="card-content">
-                <h3>Tesla Model S</h3>
-                <p>The Tesla Model S is a fully electric luxury sedan known for its incredible performance, cutting-edge technology, and long driving range. It offers a futuristic driving experience with autopilot features, minimalistic interior, and silent acceleration.</p>
-                <p class="price">$80,000</p>
-                <button>Buy Now</button>
-            </div>
-        </div>
+for(let i=1;i<=50;i++){
 
-        <div class="card">
-            <img src="https://images.pexels.com/photos/170811/pexels-photo-170811.jpeg">
-            <div class="card-content">
-                <h3>BMW M4</h3>
-                <p>The BMW M4 is a high-performance sports coupe that blends luxury with aggressive styling. Powered by a turbocharged engine, it delivers thrilling speed, precise handling, and a driver-focused interior designed for maximum comfort and control.</p>
-                <p class="price">$70,000</p>
-                <button>Buy Now</button>
-            </div>
-        </div>
+    let car = carNames[i % carNames.length];
+    let price = (50000 + i*1500);
+    let delivery = (3 + (i%7)) + " days";
+    let holding = (2 + (i%5)) + " days";
+    let place = places[i % places.length];
 
-        <div class="card">
-            <img src="https://images.pexels.com/photos/210019/pexels-photo-210019.jpeg">
-            <div class="card-content">
-                <h3>Audi R8</h3>
-                <p>The Audi R8 is a supercar that combines breathtaking design with exceptional performance. Featuring a powerful V10 engine and quattro all-wheel drive, it offers both speed and stability, making it a dream car for enthusiasts.</p>
-                <p class="price">$120,000</p>
-                <button>Buy Now</button>
-            </div>
-        </div>
+    let div = document.createElement("div");
+    div.className = "card";
 
-        <div class="card">
-            <img src="https://images.pexels.com/photos/100650/pexels-photo-100650.jpeg">
-            <div class="card-content">
-                <h3>Mercedes-Benz C-Class</h3>
-                <p>The Mercedes-Benz C-Class represents elegance and innovation. With a luxurious interior, advanced safety features, and smooth performance, it is perfect for those who value comfort and prestige in their daily drive.</p>
-                <p class="price">$60,000</p>
-                <button>Buy Now</button>
-            </div>
-        </div>
+    div.innerHTML = `
+    <img src="https://picsum.photos/400/200?random=${i}">
+    <div class="info">
+        <h3>${car} ${i}</h3>
 
-        <div class="card">
-            <img src="https://images.pexels.com/photos/358070/pexels-photo-358070.jpeg">
-            <div class="card-content">
-                <h3>Lamborghini Huracan</h3>
-                <p>The Lamborghini Huracan is an exotic supercar that delivers unmatched speed and stunning design. With its roaring engine and sharp lines, it is built to impress both on the road and on the track.</p>
-                <p class="price">$200,000</p>
-                <button>Buy Now</button>
-            </div>
-        </div>
+        <p class="price">$${price}</p>
 
-        <div class="card">
-            <img src="https://images.pexels.com/photos/1592384/pexels-photo-1592384.jpeg">
-            <div class="card-content">
-                <h3>Ford Mustang</h3>
-                <p>The Ford Mustang is an iconic American muscle car known for its bold design and powerful engine options. It delivers an exciting driving experience and remains a symbol of performance and freedom.</p>
-                <p class="price">$55,000</p>
-                <button>Buy Now</button>
-            </div>
-        </div>
+        <p><b>📍 Available at:</b> ${place}</p>
+        <p><b>🚚 Delivery Time:</b> ${delivery}</p>
+        <p><b>⏳ Holding Time:</b> ${holding}</p>
 
+        <label>Select Color:</label>
+        <select>
+            ${colors.map(c => `<option>${c}</option>`).join("")}
+        </select>
+
+        <label>Select Model:</label>
+        <select>
+            ${models.map(m => `<option>${m}</option>`).join("")}
+        </select>
+
+        <button onclick="buyCar('${car}', ${price})">Buy Now</button>
     </div>
+    `;
 
-    <h2>About Our Showroom</h2>
-    <p>
-        Welcome to our premium car showroom, where automotive excellence meets customer satisfaction. We specialize in offering a wide range of luxury vehicles, sports cars, and electric models from the world’s most renowned brands. Our mission is to provide not just cars, but experiences that redefine the joy of driving.
-    </p>
-    <p>
-        Each car in our collection is carefully selected to ensure the highest quality, performance, and reliability. Whether you are looking for speed, comfort, sustainability, or advanced technology, we have something for every car enthusiast. Our team of experts is always ready to assist you in choosing the perfect vehicle that matches your lifestyle and preferences.
-    </p>
-    <p>
-        In addition to sales, we also offer financing options, maintenance services, and after-sales support to ensure a seamless ownership experience. Visit our showroom today and discover why we are the trusted choice for car lovers around the world.
-    </p>
+    container.appendChild(div);
+}
 
-</div>
-
-<footer>
-    <p>© 2026 Car Showroom | All Rights Reserved</p>
-</footer>
+function buyCar(name, price){
+    alert("You selected: " + name + "\\nPrice: $" + price);
+}
+</script>
 
 </body>
 </html>
