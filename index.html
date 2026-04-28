@@ -6,168 +6,127 @@
   <title>iPhone Showroom</title>
 
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: Arial, sans-serif;
-    }
-
     body {
+      margin: 0;
+      font-family: Arial, sans-serif;
       background: #f5f5f7;
-      color: #1d1d1f;
     }
 
     header {
       background: #000;
       color: #fff;
-      padding: 20px;
       text-align: center;
+      padding: 20px;
       font-size: 24px;
-      letter-spacing: 1px;
     }
 
     nav {
-      display: flex;
-      justify-content: center;
       background: #111;
+      text-align: center;
       padding: 10px;
     }
 
-    nav a {
-      color: #fff;
-      margin: 0 15px;
-      text-decoration: none;
-      font-size: 16px;
-    }
-
-    nav a:hover {
-      color: #0a84ff;
-    }
-
-    .hero {
-      text-align: center;
-      padding: 60px 20px;
-      background: linear-gradient(to right, #000, #333);
-      color: #fff;
-    }
-
-    .hero h1 {
-      font-size: 48px;
-      margin-bottom: 10px;
-    }
-
-    .hero p {
-      font-size: 18px;
-      margin-bottom: 20px;
-    }
-
-    .btn {
-      background: #0a84ff;
-      color: #fff;
-      padding: 12px 25px;
-      border: none;
-      cursor: pointer;
+    nav input {
+      padding: 10px;
+      width: 250px;
       border-radius: 20px;
+      border: none;
     }
 
     .products {
-      padding: 50px 20px;
+      padding: 30px;
       text-align: center;
     }
 
-    .products h2 {
-      margin-bottom: 30px;
-      font-size: 32px;
-    }
-
-    .product-grid {
+    .grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
       gap: 20px;
+      margin-top: 20px;
     }
 
-    .product-card {
-      background: #fff;
-      padding: 20px;
+    .card {
+      background: white;
+      padding: 15px;
       border-radius: 15px;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
     }
 
-    .product-card img {
+    .card img {
       width: 100%;
       border-radius: 10px;
     }
 
-    .product-card h3 {
-      margin: 15px 0;
-    }
-
-    .product-card button {
+    .btn {
+      background: #0071e3;
+      color: white;
+      padding: 10px;
+      border: none;
+      border-radius: 20px;
+      cursor: pointer;
       margin-top: 10px;
     }
 
-    footer {
-      text-align: center;
-      padding: 20px;
-      background: #000;
-      color: #fff;
-      margin-top: 40px;
-    }
   </style>
 </head>
 
 <body>
 
-  <header>
-    🍎 Premium iPhone Showroom
-  </header>
+<header>🍎 iPhone Mega Showroom</header>
 
-  <nav>
-    <a href="#">Home</a>
-    <a href="#">Products</a>
-    <a href="#">Offers</a>
-    <a href="#">Contact</a>
-  </nav>
+<nav>
+  <input type="text" id="search" placeholder="Search iPhone...">
+</nav>
 
-  <section class="hero">
-    <h1>Welcome to the Future</h1>
-    <p>Discover the latest iPhones with best prices</p>
-    <button class="btn">Shop Now</button>
-  </section>
+<section class="products">
+  <h2>All iPhones (100 Items)</h2>
+  <div class="grid" id="productGrid"></div>
+</section>
 
-  <section class="products">
-    <h2>Latest iPhones</h2>
+<script>
+  const grid = document.getElementById("productGrid");
+  const searchInput = document.getElementById("search");
 
-    <div class="product-grid">
+  // Generate 100 products
+  const products = [];
 
-      <div class="product-card">
-        <img src="https://via.placeholder.com/250" alt="iPhone">
-        <h3>iPhone 15 Pro</h3>
-        <p>$999</p>
-        <button class="btn">Buy Now</button>
-      </div>
+  const models = ["iPhone 15 Pro", "iPhone 15", "iPhone 14", "iPhone 13"];
 
-      <div class="product-card">
-        <img src="https://via.placeholder.com/250" alt="iPhone">
-        <h3>iPhone 15</h3>
-        <p>$799</p>
-        <button class="btn">Buy Now</button>
-      </div>
+  for (let i = 1; i <= 100; i++) {
+    let model = models[i % models.length];
+    products.push({
+      name: model + " #" + i,
+      price: 600 + (i * 5),
+      image: "https://via.placeholder.com/250"
+    });
+  }
 
-      <div class="product-card">
-        <img src="https://via.placeholder.com/250" alt="iPhone">
-        <h3>iPhone 14</h3>
-        <p>$699</p>
-        <button class="btn">Buy Now</button>
-      </div>
+  function displayProducts(list) {
+    grid.innerHTML = "";
+    list.forEach(p => {
+      grid.innerHTML += `
+        <div class="card">
+          <img src="${p.image}">
+          <h3>${p.name}</h3>
+          <p>$${p.price}</p>
+          <button class="btn">Buy Now</button>
+        </div>
+      `;
+    });
+  }
 
-    </div>
-  </section>
+  // Search function
+  searchInput.addEventListener("keyup", () => {
+    const value = searchInput.value.toLowerCase();
+    const filtered = products.filter(p =>
+      p.name.toLowerCase().includes(value)
+    );
+    displayProducts(filtered);
+  });
 
-  <footer>
-    © 2026 iPhone Showroom | All Rights Reserved
-  </footer>
+  // Initial load
+  displayProducts(products);
+</script>
 
 </body>
 </html>
